@@ -1,0 +1,17 @@
+const Lambda = require('./lambda-server/server')
+
+// Replace with your own app entry point
+const app = require('./app/index')
+
+const lambda = new Lambda({
+    port: 8081, // pick a port
+    mappings: [
+        {
+            path: '/', // Replace with actual path
+            method: 'get', // One of get, post, put, delete, etc.
+            handler: app.getIndex // Your app entry point exported handler
+        }
+    ]
+});
+
+lambda.run();
